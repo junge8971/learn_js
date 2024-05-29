@@ -3,3 +3,6 @@
 3. https://www.youtube.com/watch?v=fcMcf_4PjfI - ещё курс по нативному js
 4. https://www.youtube.com/watch?v=Fu4BzQNN0Qs - Про bigO натацию
 5. https://www.youtube.com/watch?v=NErrGZ64OdE&t=2s - алогсы и структуры данных в js
+
+
+https://latentflip.com/loupe/ - серсив помощник для анализа loopevent
