@@ -6,3 +6,4 @@
 
 
 https://latentflip.com/loupe/ - серсив помощник для анализа loopevent
+https://jsonplaceholder.typicode.com/ -fake rest
