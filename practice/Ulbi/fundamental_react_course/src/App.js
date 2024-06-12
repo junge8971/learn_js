@@ -32,7 +32,12 @@ export default function App() {
 
       <PostForm create={create_new_post} />
 
-      <PostList posts={posts} title={"Список постов"} remove={remove_post} />
+      {/* Пример условной отрисовки  */}
+      {posts.length !== 0 ? (
+        <PostList posts={posts} title={"Список постов"} remove={remove_post} />
+      ) : (
+        <h1 style={{ textAlign: "center" }}> Пока постов нет</h1>
+      )}
     </div>
   );
 }
