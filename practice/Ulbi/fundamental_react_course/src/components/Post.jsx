@@ -1,9 +1,10 @@
 import React from "react";
+import CustomButton from "./UI/button/CustomButton";
 
 // в компоненты можно передавать информацию с помощью пропс
 // props - это объект
 // Что бы передать в пропс данные используется такая конструкция <ComponentName object_name={{prop_key:value}} />
-export default function Post(props) {
+export default function Post({ remove, ...props }) {
   return (
     <div className="App">
       <div className="post">
@@ -14,7 +15,7 @@ export default function Post(props) {
           <div>{props.post.body}</div>
         </div>
         <div className="post_btns">
-          <button>Удоли</button>
+          <CustomButton onClick={() => remove(props.post)}>Удоли</CustomButton>
         </div>
       </div>
     </div>

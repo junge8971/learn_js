@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Counter from "./components/Сounter";
 import ClassCounter from "./components/ClassCounter";
 
@@ -21,6 +21,10 @@ export default function App() {
     set_posts([...posts, new_post]);
   };
 
+  const remove_post = (post) => {
+    set_posts(posts.filter((item) => item.id !== post.id));
+  };
+
   return (
     <div className="App">
       <Counter />
@@ -28,7 +32,7 @@ export default function App() {
 
       <PostForm create={create_new_post} />
 
-      <PostList posts={posts} title={"Список постов"} />
+      <PostList posts={posts} title={"Список постов"} remove={remove_post} />
     </div>
   );
 }
