@@ -1,0 +1,20 @@
+.custom_modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background-color: black;
+}
+.custom_modal_content {
+  padding: 25px;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.custom_modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -6,6 +6,8 @@ import PostForm from "./components/PostForm";
 
 import PostList from "./components/PostList";
 import PostFilter from "./components/PostsFilter";
+import CustomModal from "./components/UI/modals/CustomModals";
+import CustomButton from "./components/UI/button/CustomButton";
 
 // Стили
 import "./styles/app.css";
@@ -22,6 +24,7 @@ export default function App() {
     post_order: "",
     search_value: "",
   });
+  let [modal_window_visable, set_modal_window_visable] = React.useState(false);
 
   const sorted_posts = React.useMemo(() => {
     console.log("get_sorted_post");
@@ -51,6 +54,7 @@ export default function App() {
 
   const create_new_post = (new_post) => {
     set_posts([...posts, new_post]);
+    set_modal_window_visable(false);
   };
 
   const remove_post = (post) => {
@@ -62,12 +66,18 @@ export default function App() {
       <Counter />
       <ClassCounter />
 
-      <PostForm create={create_new_post} />
+      <CustomButton onClick={() => set_modal_window_visable(true)}>
+        Добавить пост
+      </CustomButton>
+      <CustomModal
+        visible={modal_window_visable}
+        set_modal_window_visable={set_modal_window_visable}
+      >
+        <PostForm create={create_new_post} />
+      </CustomModal>
 
       <hr style={{ margin: "15px 0" }} />
-
       <PostFilter filter_posts={filter_posts} set_filter_posts={set_filter_posts} />
-
       <PostList
         posts={sorted_and_searched_posts}
         title={"Список постов"}
