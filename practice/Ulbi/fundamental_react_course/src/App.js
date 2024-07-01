@@ -68,16 +68,11 @@ export default function App() {
 
       <PostFilter filter_posts={filter_posts} set_filter_posts={set_filter_posts} />
 
-      {/* Пример условной отрисовки  */}
-      {sorted_and_searched_posts.length !== 0 ? (
-        <PostList
-          posts={sorted_and_searched_posts}
-          title={"Список постов"}
-          remove={remove_post}
-        />
-      ) : (
-        <h1 style={{ textAlign: "center" }}> Пока постов нет</h1>
-      )}
+      <PostList
+        posts={sorted_and_searched_posts}
+        title={"Список постов"}
+        remove={remove_post}
+      />
     </div>
   );
 }
