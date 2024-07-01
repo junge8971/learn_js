@@ -23,7 +23,7 @@ export default function App() {
   let [post_order, set_post_order] = React.useState("");
   let [search_value, set_search_value] = React.useState("");
 
-  function get_sorted_post() {
+  const sorted_posts = React.useMemo(() => {
     console.log("get_sorted_post");
     if (post_order) {
       return [...posts].sort((first, second) => {
@@ -32,8 +32,17 @@ export default function App() {
     } else {
       return posts;
     }
-  }
-  const sorted_posts = get_sorted_post();
+  }, [post_order, posts]);
+
+  const sorted_and_searched_posts = React.useMemo(() => {
+    if (search_value) {
+      return sorted_posts.filter((post) => {
+        return post.title.includes(search_value) || post.body.includes(search_value);
+      });
+    } else {
+      return sorted_posts;
+    }
+  }, [search_value, sorted_posts]);
 
   const change_order_in_posts = (new_order) => {
     set_post_order(new_order);
@@ -74,8 +83,12 @@ export default function App() {
       ></CustomSelect>
 
       {/* Пример условной отрисовки  */}
-      {posts.length !== 0 ? (
-        <PostList posts={sorted_posts} title={"Список постов"} remove={remove_post} />
+      {sorted_and_searched_posts.length !== 0 ? (
+        <PostList
+          posts={sorted_and_searched_posts}
+          title={"Список постов"}
+          remove={remove_post}
+        />
       ) : (
         <h1 style={{ textAlign: "center" }}> Пока постов нет</h1>
       )}
