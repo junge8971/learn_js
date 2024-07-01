@@ -7,6 +7,7 @@ import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
 
 import CustomSelect from "./components/UI/select/CustomSelect";
+import CustomInput from "./components/UI/input/CustomInput";
 
 // Стили
 import "./styles/app.css";
@@ -20,14 +21,22 @@ export default function App() {
   ]);
 
   let [post_order, set_post_order] = React.useState("");
+  let [search_value, set_search_value] = React.useState("");
+
+  function get_sorted_post() {
+    console.log("get_sorted_post");
+    if (post_order) {
+      return [...posts].sort((first, second) => {
+        return first[post_order].localeCompare(second[post_order]);
+      });
+    } else {
+      return posts;
+    }
+  }
+  const sorted_posts = get_sorted_post();
 
   const change_order_in_posts = (new_order) => {
     set_post_order(new_order);
-    set_posts(
-      [...posts].sort((first, second) => {
-        return first[new_order].localeCompare(second[new_order]);
-      })
-    );
   };
 
   const create_new_post = (new_post) => {
@@ -46,6 +55,14 @@ export default function App() {
       <PostForm create={create_new_post} />
 
       <hr style={{ margin: "15px 0" }} />
+
+      <CustomInput
+        placeholder="поиск"
+        type="text"
+        value={search_value}
+        onChange={(event) => set_search_value(event.target.value)}
+      ></CustomInput>
+
       <CustomSelect
         value={post_order}
         onChange={change_order_in_posts}
@@ -58,7 +75,7 @@ export default function App() {
 
       {/* Пример условной отрисовки  */}
       {posts.length !== 0 ? (
-        <PostList posts={posts} title={"Список постов"} remove={remove_post} />
+        <PostList posts={sorted_posts} title={"Список постов"} remove={remove_post} />
       ) : (
         <h1 style={{ textAlign: "center" }}> Пока постов нет</h1>
       )}
