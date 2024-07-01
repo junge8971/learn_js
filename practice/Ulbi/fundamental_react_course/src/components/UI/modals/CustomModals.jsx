@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./CustomModal.module.css";
-import CustomButton from "../button/CustomButton";
 
 export default function CustomModal({ visible, set_modal_window_visable, ...props }) {
   let classes_for_modal = [classes.custom_modal];
