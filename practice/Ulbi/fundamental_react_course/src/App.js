@@ -8,30 +8,35 @@ import PostList from "./components/PostList";
 import PostFilter from "./components/PostsFilter";
 import CustomModal from "./components/UI/modals/CustomModals";
 import CustomButton from "./components/UI/button/CustomButton";
+import axios from "axios";
 
 // Стили
 import "./styles/app.css";
 import { usePosts } from "./hooks/usePosts";
 
 export default function App() {
-  let [posts, set_posts] = React.useState([
-    { id: 0, title: "Стартуем", body: "Описание" },
-    { id: 1, title: "Едем", body: "Описание_2" },
-    { id: 2, title: "Стартуем 2", body: "Описание 2" },
-    { id: 3, title: "Стартуем 3", body: "Описание 3" },
-  ]);
+  async function getPosts() {
+    const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    console.log(response);
+    set_posts(response.data);
+  }
 
-  let [filter_posts, set_filter_posts] = React.useState({
+  const [posts, set_posts] = React.useState([]);
+
+  const [filter_posts, set_filter_posts] = React.useState({
     post_order: "",
     search_value: "",
   });
-  let [modal_window_visable, set_modal_window_visable] = React.useState(false);
-
+  const [modal_window_visable, set_modal_window_visable] = React.useState(false);
   const sorted_and_searched_posts = usePosts(
     filter_posts.search_value,
     filter_posts.post_order,
     posts
   );
+
+  React.useEffect(() => {
+    getPosts();
+  }, []);
 
   const create_new_post = (new_post) => {
     set_posts([...posts, new_post]);
