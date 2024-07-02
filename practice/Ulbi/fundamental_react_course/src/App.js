@@ -13,6 +13,7 @@ import PostService from "./API/PostService";
 import "./styles/app.css";
 import { usePosts } from "./hooks/usePosts";
 import CustomLoader from "./components/UI/loaders/CustomLoader";
+import { useFetching } from "./hooks/useFetching";
 
 export default function App() {
   const [posts, set_posts] = React.useState([]);
@@ -28,18 +29,15 @@ export default function App() {
     posts
   );
 
-  const [is_post_loading, set_posts_loading_status] = React.useState(false);
+  const [fetch_posts, is_posts_loading, error] = useFetching(async () => {
+    const posts = await PostService.get_all_posts();
+    set_posts(posts);
+  });
 
   React.useEffect(() => {
-    getPosts();
+    fetch_posts();
   }, []);
 
-  async function getPosts() {
-    set_posts_loading_status(true);
-    const all_fetched_posts = await PostService.get_all_posts();
-    set_posts(all_fetched_posts);
-    set_posts_loading_status(false);
-  }
   const create_new_post = (new_post) => {
     set_posts([...posts, new_post]);
     set_modal_window_visable(false);
@@ -67,7 +65,7 @@ export default function App() {
       <hr style={{ margin: "15px 0" }} />
       <PostFilter filter_posts={filter_posts} set_filter_posts={set_filter_posts} />
 
-      {is_post_loading ? (
+      {is_posts_loading ? (
         <CustomLoader />
       ) : (
         <PostList
