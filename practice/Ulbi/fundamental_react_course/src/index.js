@@ -2,12 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/app.css";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import Posts from "./pages/Posts";
-import About from "./pages/About";
+import { BrowserRouter } from "react-router-dom";
 
 import Navbar from "./components/UI/navbar/Navbar";
+import AppRouter from "./components/AppRouter";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,10 +13,7 @@ root.render(
     <BrowserRouter>
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Posts />}></Route>
-        <Route path="/about_us" element={<About />}></Route>
-      </Routes>
+      <AppRouter />
     </BrowserRouter>
   </React.StrictMode>
 );
