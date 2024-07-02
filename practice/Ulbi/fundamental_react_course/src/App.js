@@ -1,26 +1,19 @@
 import React from "react";
 import Counter from "./components/Сounter";
 import ClassCounter from "./components/ClassCounter";
-
 import PostForm from "./components/PostForm";
-
 import PostList from "./components/PostList";
 import PostFilter from "./components/PostsFilter";
 import CustomModal from "./components/UI/modals/CustomModals";
 import CustomButton from "./components/UI/button/CustomButton";
-import axios from "axios";
+
+import PostService from "./API/PostService";
 
 // Стили
 import "./styles/app.css";
 import { usePosts } from "./hooks/usePosts";
 
 export default function App() {
-  async function getPosts() {
-    const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    console.log(response);
-    set_posts(response.data);
-  }
-
   const [posts, set_posts] = React.useState([]);
 
   const [filter_posts, set_filter_posts] = React.useState({
@@ -34,10 +27,18 @@ export default function App() {
     posts
   );
 
+  const [is_post_loading, set_posts_loading_status] = React.useState(false);
+
   React.useEffect(() => {
     getPosts();
   }, []);
 
+  async function getPosts() {
+    set_posts_loading_status(true);
+    const all_fetched_posts = await PostService.get_all_posts();
+    set_posts(all_fetched_posts);
+    set_posts_loading_status(false);
+  }
   const create_new_post = (new_post) => {
     set_posts([...posts, new_post]);
     set_modal_window_visable(false);
@@ -64,11 +65,16 @@ export default function App() {
 
       <hr style={{ margin: "15px 0" }} />
       <PostFilter filter_posts={filter_posts} set_filter_posts={set_filter_posts} />
-      <PostList
-        posts={sorted_and_searched_posts}
-        title={"Список постов"}
-        remove={remove_post}
-      />
+
+      {is_post_loading ? (
+        <h1>Загружаем посты</h1>
+      ) : (
+        <PostList
+          posts={sorted_and_searched_posts}
+          title={"Список постов"}
+          remove={remove_post}
+        />
+      )}
     </div>
   );
 }
