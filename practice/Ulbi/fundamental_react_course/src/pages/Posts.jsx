@@ -1,24 +1,22 @@
 import React from "react";
-import Counter from "./components/Сounter";
-import ClassCounter from "./components/ClassCounter";
-import PostForm from "./components/PostForm";
-import PostList from "./components/PostList";
-import PostFilter from "./components/PostsFilter";
-import CustomModal from "./components/UI/modals/CustomModals";
-import CustomButton from "./components/UI/button/CustomButton";
+import Counter from "../components/Сounter";
+import ClassCounter from "../components/ClassCounter";
+import PostForm from "../components/PostForm";
+import PostList from "../components/PostList";
+import PostFilter from "../components/PostsFilter";
+import CustomModal from "../components/UI/modals/CustomModals";
+import CustomButton from "../components/UI/button/CustomButton";
 
-import PostService from "./API/PostService";
+import PostService from "../API/PostService";
 
-// Стили
-import "./styles/app.css";
-import { usePosts, usePageNumbers } from "./hooks/usePosts";
-import CustomLoader from "./components/UI/loaders/CustomLoader";
-import { useFetching } from "./hooks/useFetching";
+import { usePosts, usePageNumbers } from "../hooks/usePosts";
+import CustomLoader from "../components/UI/loaders/CustomLoader";
+import { useFetching } from "../hooks/useFetching";
 
-import { get_page_count } from "./utils/pages.js";
-import PaginationButtons from "./components/UI/pagination/PaginationButtons.jsx";
+import { get_page_count } from "../utils/pages.js";
+import PaginationButtons from "../components/UI/pagination/PaginationButtons.jsx";
 
-export default function App() {
+export default function Posts() {
   const [posts, set_posts] = React.useState([]);
   const [page_total_count, set_page_total_count] = React.useState(0);
   const [posts_limit, set_posts_limit] = React.useState(10);
