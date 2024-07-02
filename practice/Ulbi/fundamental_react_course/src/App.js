@@ -12,6 +12,7 @@ import PostService from "./API/PostService";
 // Стили
 import "./styles/app.css";
 import { usePosts } from "./hooks/usePosts";
+import CustomLoader from "./components/UI/loaders/CustomLoader";
 
 export default function App() {
   const [posts, set_posts] = React.useState([]);
@@ -67,7 +68,7 @@ export default function App() {
       <PostFilter filter_posts={filter_posts} set_filter_posts={set_filter_posts} />
 
       {is_post_loading ? (
-        <h1>Загружаем посты</h1>
+        <CustomLoader />
       ) : (
         <PostList
           posts={sorted_and_searched_posts}
