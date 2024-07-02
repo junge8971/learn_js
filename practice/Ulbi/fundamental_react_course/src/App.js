@@ -11,13 +11,18 @@ import PostService from "./API/PostService";
 
 // Стили
 import "./styles/app.css";
-import { usePosts } from "./hooks/usePosts";
+import { usePosts, usePageNumbers } from "./hooks/usePosts";
 import CustomLoader from "./components/UI/loaders/CustomLoader";
 import { useFetching } from "./hooks/useFetching";
 
+import { get_page_count } from "./utils/pages.js";
+import PaginationButtons from "./components/UI/pagination/PaginationButtons.jsx";
+
 export default function App() {
   const [posts, set_posts] = React.useState([]);
-
+  const [page_total_count, set_page_total_count] = React.useState(0);
+  const [posts_limit, set_posts_limit] = React.useState(10);
+  const [posts_page, set_posts_page] = React.useState(1);
   const [filter_posts, set_filter_posts] = React.useState({
     post_order: "",
     search_value: "",
@@ -28,15 +33,18 @@ export default function App() {
     filter_posts.post_order,
     posts
   );
-
   const [fetch_posts, is_posts_loading, error] = useFetching(async () => {
-    const posts = await PostService.get_all_posts();
-    set_posts(posts);
+    const response = await PostService.get_all_posts(posts_limit, posts_page);
+    const counted_pages = get_page_count(response.headers["x-total-count"], posts_limit);
+    set_page_total_count(counted_pages);
+    set_posts(response.data);
   });
 
   React.useEffect(() => {
     fetch_posts();
-  }, []);
+  }, [posts_page]);
+
+  let array_of_pages_numbers = usePageNumbers(page_total_count, posts_limit);
 
   const create_new_post = (new_post) => {
     set_posts([...posts, new_post]);
@@ -74,6 +82,11 @@ export default function App() {
           remove={remove_post}
         />
       )}
+      <PaginationButtons
+        array_of_pages_numbers={array_of_pages_numbers}
+        set_page={set_posts_page}
+        current_page={posts_page}
+      />
     </div>
   );
 }

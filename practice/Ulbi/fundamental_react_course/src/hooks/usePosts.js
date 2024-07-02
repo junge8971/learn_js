@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 export const useSortedPosts = (post_order, posts) => {
   const sorted_posts = React.useMemo(() => {
@@ -29,4 +29,15 @@ export const usePosts = (search_value, post_order, posts) => {
   }, [search_value, sorted_posts]);
 
   return sorted_and_searched_posts;
+};
+
+export const usePageNumbers = (page_total_count, posts_limit) => {
+  return useMemo(() => {
+    let array_with_pages_numbers = [];
+    for (let i = 0; i < page_total_count; i++) {
+      array_with_pages_numbers.push(i + 1);
+    }
+    console.log(array_with_pages_numbers);
+    return array_with_pages_numbers;
+  }, [page_total_count, posts_limit]);
 };
