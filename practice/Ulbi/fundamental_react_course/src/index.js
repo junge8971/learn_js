@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Posts from "./pages/Posts";
 import About from "./pages/About";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/UI/navbar/Navbar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
