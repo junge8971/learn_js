@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "./Post";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function PostList({ posts, title, remove }) {
   if (!posts.length) {
@@ -9,9 +10,13 @@ export default function PostList({ posts, title, remove }) {
     <div>
       {/* Пример преобразования массива объектов в массив реакт элементов*/}
       {/* Обяхательно передаём уникальный ключ. Это нужно для рэндеринга*/}
-      {posts.map((post) => (
-        <Post post={post} key={post.id} remove={remove} />
-      ))}
+      <TransitionGroup>
+        {posts.map((post) => (
+          <CSSTransition key={post.id} timeout={500} classNames="post">
+            <Post post={post} remove={remove} />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
     </div>
   );
 }
