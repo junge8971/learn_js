@@ -11,6 +11,7 @@ import CustomButton from "./components/UI/button/CustomButton";
 
 // Стили
 import "./styles/app.css";
+import { usePosts } from "./hooks/usePosts";
 
 export default function App() {
   let [posts, set_posts] = React.useState([
@@ -26,31 +27,11 @@ export default function App() {
   });
   let [modal_window_visable, set_modal_window_visable] = React.useState(false);
 
-  const sorted_posts = React.useMemo(() => {
-    console.log("get_sorted_post");
-    if (filter_posts.post_order) {
-      return [...posts].sort((first, second) => {
-        return first[filter_posts.post_order].localeCompare(
-          second[filter_posts.post_order]
-        );
-      });
-    } else {
-      return posts;
-    }
-  }, [filter_posts.post_order, posts]);
-
-  const sorted_and_searched_posts = React.useMemo(() => {
-    if (filter_posts.search_value) {
-      return sorted_posts.filter((post) => {
-        return (
-          post.title.includes(filter_posts.search_value) ||
-          post.body.includes(filter_posts.search_value)
-        );
-      });
-    } else {
-      return sorted_posts;
-    }
-  }, [filter_posts.search_value, sorted_posts]);
+  const sorted_and_searched_posts = usePosts(
+    filter_posts.search_value,
+    filter_posts.post_order,
+    posts
+  );
 
   const create_new_post = (new_post) => {
     set_posts([...posts, new_post]);
