@@ -8,9 +8,9 @@ import PostPage from "../pages/PostPage";
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Posts />}></Route>
+      <Route path="/posts" element={<Posts />}></Route>
       <Route path="/about_us" element={<About />}></Route>
-      <Route path="/post/:id" element={<PostPage />}></Route>
+      <Route path="/posts/:id" element={<PostPage />}></Route>
     </Routes>
   );
 }

@@ -18,7 +18,7 @@ export default function Post({ remove, ...props }) {
           <div>{props.post.body}</div>
         </div>
         <div className="post_btns">
-          <CustomButton onClick={() => rout(`/post/${props.post.id}`)}>
+          <CustomButton onClick={() => rout(`/posts/${props.post.id}`)}>
             Открыть
           </CustomButton>
         </div>

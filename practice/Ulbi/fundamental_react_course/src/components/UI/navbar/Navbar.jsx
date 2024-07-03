@@ -8,6 +8,9 @@ export default function Navbar() {
         <Link to={"/"}>Home</Link>
       </p>
       <p>
+        <Link to={"/posts"}>Posts</Link>
+      </p>
+      <p>
         <Link to={"/about_us"}>About</Link>
       </p>
     </nav>
