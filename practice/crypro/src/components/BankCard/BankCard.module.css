@@ -1,0 +1,13 @@
+.bank_card {
+  width: 40%;
+  height: 20vh;
+  background-color: black;
+  color: white;
+  border-radius: 5%;
+  padding: 1%;
+}
+
+.balance {
+  margin-top: 5%;
+  font-size: 2vh;
+}
