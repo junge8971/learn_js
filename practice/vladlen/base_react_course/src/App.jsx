@@ -1,15 +1,7 @@
-import "./App.css";
-
-import { useState } from "react";
-
-function App() {
-  const [count, setCount] = useState(0);
-
+export const App = () => {
   return (
     <>
       <p>Ку</p>
     </>
   );
-}
-
-export default App;
+};
