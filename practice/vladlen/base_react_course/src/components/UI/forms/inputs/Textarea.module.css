@@ -1,0 +1,8 @@
+.textarea {
+  border: 5px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+.textarea.error {
+  border: 5px solid red;
+}

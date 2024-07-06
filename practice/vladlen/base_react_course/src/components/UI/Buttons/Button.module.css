@@ -1,0 +1,20 @@
+.button {
+  padding: 5px;
+  border: 3px solid black;
+  border-radius: 5px;
+  transition: all 0.3s;
+  font-weight: bold;
+  background-color: white;
+  margin: 5px;
+}
+.button:hover {
+  opacity: 0.8;
+}
+.button:disabled {
+  border-color: gray;
+}
+
+.button.active {
+  background-color: black;
+  color: white;
+}

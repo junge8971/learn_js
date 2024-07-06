@@ -1,0 +1,8 @@
+.textInput {
+  border: 5px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+.textInput.error {
+  border: 5px solid red;
+}
