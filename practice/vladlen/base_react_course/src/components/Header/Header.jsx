@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
-export const Header = () => {
+export const Header = memo(() => {
   const [datetime, setDatetime] = useState(new Date());
 
   useEffect(() => {
@@ -16,4 +16,6 @@ export const Header = () => {
       <span>Текущее время: {datetime.toString()}</span>
     </header>
   );
-};
+});
+
+Header.displayName = "Header";

@@ -8,17 +8,15 @@ export const ContentSelector = ({
 }) => {
   return (
     <nav className={classes.ContentSelector}>
-      {registeredContent.map((content) => {
-        return (
-          <Button
-            key={content.type}
-            onClick={() => setVisibleContent(content.type)}
-            isActive={content.type == visibleContent}
-          >
-            {content.title}
-          </Button>
-        );
-      })}
+      {registeredContent.map((content) => (
+        <Button
+          key={content.type}
+          onClick={() => setVisibleContent(content.type)}
+          isActive={content.type == visibleContent}
+        >
+          {content.title}
+        </Button>
+      ))}
     </nav>
   );
 };
