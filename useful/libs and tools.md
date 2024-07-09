@@ -8,3 +8,7 @@
 Формы
     https://www.react-hook-form.com/
     https://github.com/jquense/yup - валидация
+
+Маршрутизатор
+    https://reactrouter.com/en/main
+    https://www.npmjs.com/package/@types/react-router-dom - типы для маршрутизатора
