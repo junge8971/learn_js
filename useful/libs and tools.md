@@ -12,3 +12,6 @@
 Маршрутизатор
     https://reactrouter.com/en/main
     https://www.npmjs.com/package/@types/react-router-dom - типы для маршрутизатора
+
+Скелетоны при загрузке
+    https://www.npmjs.com/package/react-content-loader
