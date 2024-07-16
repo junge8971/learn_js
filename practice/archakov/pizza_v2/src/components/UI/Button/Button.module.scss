@@ -1,0 +1,59 @@
+@import "@/components/scss/styleTools.scss";
+
+.button {
+  border: 1px solid transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  min-width: 100px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all $duration;
+
+  &.orange {
+    background-color: $orange;
+    color: $white;
+    &:hover {
+      background-color: $darkOrange;
+    }
+    &:active {
+      background-color: $orange;
+    }
+    &.isActive {
+      background-color: $darkOrange;
+    }
+  }
+
+  &.black {
+    background-color: $black;
+    color: $white;
+    &:hover {
+      background-color: $darkOrange;
+    }
+    &:active {
+      background-color: $black;
+    }
+    &.isActive {
+      background-color: $darkOrange;
+    }
+  }
+
+  &.gray {
+    background-color: $gray;
+    color: $black;
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+    &:active {
+      background-color: $gray;
+      color: $black;
+    }
+    &.isActive {
+      background-color: $black;
+      color: $white;
+    }
+  }
+}
