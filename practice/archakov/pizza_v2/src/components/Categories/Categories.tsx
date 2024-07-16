@@ -1,10 +1,10 @@
-import { Button } from "@/components/UI/Button/Button";
+import { Button, ButtonTypes } from "@/components/UI/Button/Button";
 import { FC, memo } from "react";
 
 import cls from "./Categories.module.scss";
 
 const CategoriesComponent: FC = () => {
-  const buttonsType = "gray";
+  const buttonsType = ButtonTypes.gray;
   return (
     <div className={cls.categories}>
       <Button type={buttonsType} isActive={true}>
