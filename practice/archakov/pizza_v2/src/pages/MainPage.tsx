@@ -1,8 +1,10 @@
-import { Categories } from "@/components/Categories/Categories";
-import { Filter } from "@/components/Filter/Filter";
-import { PizzaItem } from "@/components/Pizzas/PizzaItem";
-import { FlexContainer } from "@/components/UI/Containers/FlexContainer/FlexContainer";
 import { FC, memo } from "react";
+
+import { Categories } from "../components/Categories/Categories";
+import { Filter } from "../components/Filter/Filter";
+import { PizzaItemsList } from "../components/Pizzas/PizzaItemsList";
+import { PizzaSearchForm } from "../components/PizzaSearchForm/PizzaSearchForm";
+import { FlexContainer } from "../components/UI/Containers/FlexContainer/FlexContainer";
 
 const MainPageComponent: FC = () => {
   return (
@@ -11,16 +13,8 @@ const MainPageComponent: FC = () => {
         <Categories />
         <Filter />
       </FlexContainer>
-      <FlexContainer>
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-      </FlexContainer>
+      <PizzaSearchForm />
+      <PizzaItemsList />
     </>
   );
 };

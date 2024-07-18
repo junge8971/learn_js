@@ -1,0 +1,36 @@
+@import "../../scss/styleTools.scss";
+
+.text {
+  padding: 2px;
+
+  &.black {
+    color: $black;
+  }
+  &.orange {
+    color: $orange;
+  }
+  &.gray {
+    color: $gray;
+  }
+  &.white {
+    color: $white;
+  }
+
+  &.plainText {
+    font-style: normal;
+  }
+  &.italic {
+    font-style: italic;
+  }
+  &.bold {
+    font-weight: $bold;
+  }
+  &.veryBold {
+    font-weight: $veryBold;
+  }
+  &.heading {
+    font-size: 24px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+}

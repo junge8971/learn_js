@@ -1,14 +1,16 @@
-import { Header } from "@/components/Header/Header";
-import { PageWrapper } from "@/components/UI/PageWrapper/PageWrapper.";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import { MainPage } from "./pages/MainPage";
+import { AppRouter } from "./AppRouter/AppRouter";
+import { store } from "./redux/store";
 
 function App() {
   return (
-    <PageWrapper>
-      <Header />
-      <MainPage />
-    </PageWrapper>
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

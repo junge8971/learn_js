@@ -1,24 +1,10 @@
-@import "@/components/scss/styleTools.scss";
+@import "../scss/styleTools.scss";
 
 .sort {
   position: relative;
   .label {
     display: flex;
     align-items: center;
-
-    svg {
-      margin-right: 8px;
-    }
-
-    b {
-      margin-right: 8px;
-    }
-
-    span {
-      color: $orange;
-      border-bottom: 1px dashed $orange;
-      cursor: pointer;
-    }
   }
 
   .popup {

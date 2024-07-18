@@ -1,27 +1,27 @@
 import clsx from "clsx";
 import { FC, ReactNode, memo } from "react";
 
+import { ColorTypes } from "../../../types/stylingComponents";
 import cls from "./Button.module.scss";
 
 interface ButtonProps {
   children: ReactNode;
-  type?: ButtonTypes;
+  color?: ColorTypes;
   isActive?: boolean;
-}
-
-export enum ButtonTypes {
-  black = "black",
-  orange = "orange",
-  gray = "gray",
+  onClick?: () => void;
 }
 
 const ButtonComponent: FC<ButtonProps> = ({
   children,
-  type = "black",
+  color = ColorTypes.black,
   isActive = false,
+  onClick,
 }) => {
   return (
-    <button className={clsx(cls.button, cls[type], isActive && cls.isActive)}>
+    <button
+      onClick={onClick}
+      className={clsx(cls.button, cls[color], { [cls.isActive]: isActive })}
+    >
       {children}
     </button>
   );
