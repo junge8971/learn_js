@@ -1,26 +1,37 @@
 import clsx from "clsx";
 import { FC, ReactNode, memo } from "react";
 
-import { ColorTypes, StyleTypes } from "../../../types/stylingComponents";
+import {
+  ColorTypes,
+  FontSizeTypes,
+  FontStyleTypes,
+  FontWeightTypes,
+} from "../../../types/stylingComponents";
 import cls from "./Text.module.scss";
 
 interface TextProps {
   children: ReactNode;
   color?: ColorTypes;
-  style?: StyleTypes[];
+  fontWeight?: FontWeightTypes;
+  fontSize?: FontSizeTypes;
+  fontStyle?: FontStyleTypes;
 }
 
 const TextComponent: FC<TextProps> = ({
   children,
   color = ColorTypes.black,
-  style = [StyleTypes.plainText],
+  fontWeight = FontWeightTypes.normal,
+  fontSize = FontSizeTypes.plainText,
+  fontStyle = FontStyleTypes.normal,
 }) => {
   return (
     <p
       className={clsx(
         cls.text,
         cls[color],
-        style.map((item) => cls[item])
+        cls[fontWeight],
+        cls[fontSize],
+        cls[fontStyle]
       )}
     >
       {children}

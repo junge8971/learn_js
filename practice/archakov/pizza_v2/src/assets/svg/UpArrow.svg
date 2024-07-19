@@ -1,14 +1,5 @@
-import { FC, memo } from "react";
-
-import { SVGProps } from "../../../../types/svg";
-
-const UpArrowComponent: FC<SVGProps> = ({ width = 10, height = 6, fill }) => {
-  return (
-    <svg
-      width={width}
-      height={height}
+<svg
       viewBox="0 0 10 6"
-      fill={fill}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -16,7 +7,3 @@ const UpArrowComponent: FC<SVGProps> = ({ width = 10, height = 6, fill }) => {
         fill="#2C2C2C"
       />
     </svg>
-  );
-};
-
-export const UpArrow = memo(UpArrowComponent);

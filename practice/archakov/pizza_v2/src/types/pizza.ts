@@ -9,7 +9,18 @@ export interface IPizza {
   rating: number;
 }
 
+export interface IPizzaInCard
+  extends Omit<IPizza, "types" | "sizes">,
+    IPizzaSettings {
+  uuid: number;
+}
+
 export interface ICategory {
   id: number;
   title: string;
+}
+
+export interface IPizzaSettings {
+  type: number;
+  size: number;
 }

@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect } from "react";
+import { FC, memo, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchCategories } from "../../redux/categories/asyncActions";

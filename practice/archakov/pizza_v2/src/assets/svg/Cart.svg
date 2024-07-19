@@ -1,18 +1,5 @@
-import { FC, memo } from "react";
-
-import { SVGProps } from "../../../../types/svg";
-
-const CartIconComponent: FC<SVGProps> = ({
-  width = "18",
-  height = "18",
-  fill,
-}) => {
-  return (
-    <svg
-      width={width}
-      height={height}
+ <svg
       viewBox="0 0 18 18"
-      fill={fill}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -37,7 +24,3 @@ const CartIconComponent: FC<SVGProps> = ({
         strokeLinejoin="round"
       />
     </svg>
-  );
-};
-
-export const CartIcon = memo(CartIconComponent);

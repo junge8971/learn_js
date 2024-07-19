@@ -1,18 +1,28 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import { FC, memo } from "react";
 
-import { Colors } from "../../types/colors";
-import { ColorTypes, StyleTypes } from "../../types/stylingComponents";
+import UpArrowIcon from "../../assets/svg/UpArrow.svg?react";
+import {
+  ColorTypes,
+  FontStyleTypes,
+  FontWeightTypes,
+} from "../../types/stylingComponents";
 import { Button } from "../UI/Button/Button";
-import { UpArrow } from "../UI/Icons/SVG/UpArrow";
-import { Text } from "../UI/Text/Tesxt";
+import { Text } from "../UI/Text/Text";
 import cls from "./Filter.module.scss";
 
 const FilterComponent: FC = () => {
   return (
     <div className={cls.sort}>
       <div className={cls.label}>
-        <UpArrow fill={Colors.black} />
-        <Text style={[StyleTypes.bold, StyleTypes.italic]}>Сортировка по:</Text>
+        <UpArrowIcon className={cls.upArrowIcon} />
+        <Text
+          fontWeight={FontWeightTypes.bold}
+          fontStyle={FontStyleTypes.italic}
+        >
+          Сортировка по:
+        </Text>
         <Text color={ColorTypes.orange}>популярности</Text>
       </div>
       <div className={cls.popup}>

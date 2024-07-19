@@ -15,3 +15,6 @@
 
 Скелетоны при загрузке
     https://www.npmjs.com/package/react-content-loader
+
+Hooks
+    https://www.npmjs.com/package/debounce - usedebouce function

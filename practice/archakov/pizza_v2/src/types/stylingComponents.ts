@@ -5,10 +5,18 @@ export enum ColorTypes {
   white = "white",
 }
 
-export enum StyleTypes {
-  plainText = "plainText",
-  italic = "italic",
+export enum FontWeightTypes {
+  normal = "normal",
   bold = "bold",
   veryBold = "veryBold",
+}
+
+export enum FontSizeTypes {
+  plainText = "plainText",
   heading = "heading",
+}
+
+export enum FontStyleTypes {
+  normal = "normal",
+  italic = "italic",
 }
