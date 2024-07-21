@@ -1,13 +1,13 @@
+import debounce from "debounce";
 import { ChangeEvent, FC, memo, useCallback } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { setSearchValue } from "../../redux/pizzaSearchForm/pizzaSearchFormSlice";
-import { RootState } from "../../redux/store";
 import { TextInput } from "../UI/Form/Input/TextInput/TextInput";
 
 const PizzaSearchFormComponent: FC = () => {
   const searchValue = useAppSelector(
-    (state: RootState) => state.pizzaSearchForm.searchValue
+    (state) => state.pizzaSearchForm.searchValue
   );
   const dispatch = useAppDispatch();
 

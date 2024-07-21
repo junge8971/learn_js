@@ -2,14 +2,20 @@ import { FC, ReactNode, memo } from "react";
 
 export interface ManySkeletonsProps {
   amount?: number;
-  skeletonComponent: ReactNode;
+  SkeletonComponent: ReactNode;
 }
 
 const ManySkeletonsComponent: FC<ManySkeletonsProps> = ({
   amount = 10,
-  skeletonComponent,
+  SkeletonComponent,
 }: ManySkeletonsProps) => {
-  return <>{[...new Array(amount)].map(() => skeletonComponent)}</>;
+  return (
+    <>
+      {[...new Array(amount)].map((_, index) => (
+        <div key={index}>{SkeletonComponent}</div>
+      ))}
+    </>
+  );
 };
 
 export const ManySkeletons = memo(ManySkeletonsComponent);

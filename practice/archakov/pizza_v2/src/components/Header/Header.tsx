@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import CartIcon from "../../assets/svg/Cart.svg?react";
 import { useAppSelector } from "../../hooks/redux";
-import { RootState } from "../../redux/store";
 import {
   ColorTypes,
   FontSizeTypes,
@@ -21,7 +20,7 @@ import { Text } from "../UI/Text/Text";
 import cls from "./Header.module.scss";
 
 const HeaderComponent: FC = () => {
-  const cartItems = useAppSelector((state: RootState) => state.cartSlice.items);
+  const cartItems = useAppSelector((state) => state.cartSlice.items);
   const totalCartPrice = useMemo(
     () => getTotalPriceFromCartItems(cartItems),
     [cartItems]

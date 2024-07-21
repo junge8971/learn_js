@@ -32,26 +32,21 @@ export const categorySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchCategories.pending,
-      (state, action: PayloadAction<ICategory[]>) => {
+    builder
+      .addCase(fetchCategories.pending, (state) => {
         state.status = FetchStatuses.loading;
-      }
-    );
-    builder.addCase(
-      fetchCategories.fulfilled,
-      (state, action: PayloadAction<ICategory[]>) => {
-        state.status = FetchStatuses.success;
-        state.categories = action.payload;
-      }
-    );
-    builder.addCase(
-      fetchCategories.rejected,
-      (state, action: PayloadAction<ICategory[]>) => {
+      })
+      .addCase(
+        fetchCategories.fulfilled,
+        (state, action: PayloadAction<ICategory[]>) => {
+          state.status = FetchStatuses.success;
+          state.categories = action.payload;
+        }
+      )
+      .addCase(fetchCategories.rejected, (state) => {
         state.status = FetchStatuses.error;
         state.categories = [];
-      }
-    );
+      });
   },
 });
 export const { selectCategory, setCategories } = categorySlice.actions;

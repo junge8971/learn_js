@@ -3,7 +3,6 @@ import { FC, memo, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchCategories } from "../../redux/categories/asyncActions";
 import { selectCategory } from "../../redux/categories/categorySlice";
-import { RootState } from "../../redux/store";
 import { FetchStatuses } from "../../types/fetching";
 import { ICategory } from "../../types/pizza";
 import { ColorTypes } from "../../types/stylingComponents";
@@ -13,16 +12,14 @@ import { ManySkeletons } from "../UI/Skeletons/ManySkeletons";
 import cls from "./Categories.module.scss";
 
 const CategoriesComponent: FC = () => {
-  const categories = useAppSelector(
-    (state: RootState) => state.categorySlice.categories
-  );
+  const categories = useAppSelector((state) => state.categorySlice.categories);
+  console.log(categories);
   const categoriesStatus = useAppSelector(
-    (state: RootState) => state.categorySlice.status
+    (state) => state.categorySlice.status
   );
   const selectedCategory = useAppSelector(
-    (state: RootState) => state.categorySlice.selectedCategory
+    (state) => state.categorySlice.selectedCategory
   );
-  console.log(selectedCategory);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

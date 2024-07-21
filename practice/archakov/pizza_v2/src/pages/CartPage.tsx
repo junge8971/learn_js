@@ -5,10 +5,9 @@ import { Button } from "../components/UI/Button/Button";
 import { FlexContainer } from "../components/UI/Containers/FlexContainer/FlexContainer";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { clearCart } from "../redux/cart/cartSlice";
-import { RootState } from "../redux/store";
 
 const CartPageComponent: FC = () => {
-  const cart = useAppSelector((state: RootState) => state.cartSlice.items);
+  const cart = useAppSelector((state) => state.cartSlice.items);
   const dispatch = useAppDispatch();
 
   const clearItemsInCart = () => dispatch(clearCart());

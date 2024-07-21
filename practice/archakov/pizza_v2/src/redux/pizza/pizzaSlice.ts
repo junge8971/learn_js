@@ -23,26 +23,21 @@ export const pizzaSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchPizzas.pending,
-      (state, action: PayloadAction<IPizza[]>) => {
+    builder
+      .addCase(fetchPizzas.pending, (state) => {
         state.status = FetchStatuses.loading;
-      }
-    );
-    builder.addCase(
-      fetchPizzas.fulfilled,
-      (state, action: PayloadAction<IPizza[]>) => {
-        state.status = FetchStatuses.success;
-        state.pizzas = action.payload;
-      }
-    );
-    builder.addCase(
-      fetchPizzas.rejected,
-      (state, action: PayloadAction<IPizza[]>) => {
+      })
+      .addCase(
+        fetchPizzas.fulfilled,
+        (state, action: PayloadAction<IPizza[]>) => {
+          state.status = FetchStatuses.success;
+          state.pizzas = action.payload;
+        }
+      )
+      .addCase(fetchPizzas.rejected, (state) => {
         state.status = FetchStatuses.error;
         state.pizzas = [];
-      }
-    );
+      });
   },
 });
 
