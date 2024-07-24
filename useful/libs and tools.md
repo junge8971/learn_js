@@ -26,3 +26,9 @@ linting
 
 Принцип построения архитектуры
     https://feature-sliced.design/ru/docs/get-started/overview
+
+Переводчик
+    https://react.i18next.com/
+
+Тестирование
+    https://jestjs.io/
