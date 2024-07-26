@@ -32,3 +32,4 @@ linting
 
 Тестирование
     https://jestjs.io/
+    https://loki.js.org/ - скриншотные тесты
